@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FileParser": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Anton\\source\\repos\\FileParser\\FileParser\\bin\\Debug\\netcoreapp3.1\\File.txt Privet"
+    }
+  }
+}
