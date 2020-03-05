@@ -55,7 +55,7 @@ namespace FileParser
                 if (!IsFileValid(inputData.FilePath))
                     throw new FileNotFoundException($"File '{inputData.FilePath}' not found");
 
-                var operationHandler = _operationHandlers.FirstOrDefault(x => x.CanProcess(inputData));
+                var operationHandler = _operationHandlers.FirstOrDefault(o => o.CanProcess(inputData.Operation));
 
                 if (operationHandler == null)
                     throw new NotSupportedException($"Operation '{inputData.Operation}' is not supported.");

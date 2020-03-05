@@ -3,6 +3,7 @@ using FileParser.Files;
 using FileParser.Logger.Interfaces;
 using FileParser.OperationHandlers;
 using Moq;
+using System;
 using Xunit;
 
 namespace FileParserTests
@@ -28,7 +29,7 @@ namespace FileParserTests
             );
 
             // Act
-            var actualValue = handler.CanProcess(inputData);
+            var actualValue = handler.CanProcess(inputData.Operation);
 
             // Assert
             Assert.Equal(expectedValue, actualValue);
@@ -53,10 +54,50 @@ namespace FileParserTests
             );
 
             // Act
-            var actualValue = handler.CanProcess(inputData);
+            var actualValue = handler.CanProcess(inputData.Operation);
 
             // Assert
             Assert.Equal(expectedValue, actualValue);
+        }
+
+        [Fact]
+        public void CantProcess_Positive()
+        {
+            // Arrange
+            var inputData = new InputData
+            {
+                Operation = Operation.Count
+            };
+
+            // Assert
+            var actualValue = Assert.Throws<ArgumentNullException>(
+                () =>
+                    {
+                        var handler = new CountWordHandler(null, null);
+                    }
+            );
+
+            Assert.IsType<ArgumentNullException>(actualValue);
+        }
+
+        [Fact]
+        public void CantProcess_Negative()
+        {
+            // Arrange
+            var inputData = new InputData
+            {
+                Operation = Operation.Replace
+            };
+
+            // Assert
+            var actualValue = Assert.Throws<ArgumentNullException>(
+                () =>
+                    {
+                        var handler = new CountWordHandler(null, null);
+                    }
+            );
+
+            Assert.IsType<ArgumentNullException>(actualValue);
         }
 
         [Fact]

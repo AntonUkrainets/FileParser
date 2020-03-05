@@ -7,21 +7,28 @@ namespace FileParser.OperationHandlers
 {
     public class CountWordHandler : IOperationHandler
     {
+        #region Private Members
+
         private readonly IFileManager _fileManager;
         private readonly ILogger _logger;
+
+        #endregion
 
         public CountWordHandler(
             IFileManager fileManager,
             ILogger logger
         )
         {
-            _fileManager = fileManager ?? throw new ArgumentNullException(nameof(fileManager));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _fileManager = fileManager ??
+                throw new ArgumentNullException(nameof(fileManager));
+
+            _logger = logger ??
+                throw new ArgumentNullException(nameof(logger));
         }
 
-        public bool CanProcess(InputData inputData)
+        public bool CanProcess(Operation currentOperation)
         {
-            return inputData.Operation == Operation.Count;
+            return currentOperation == Operation.Count;
         }
 
         public void Process(InputData inputData)
@@ -35,11 +42,11 @@ namespace FileParser.OperationHandlers
 
         private string[] GetWords(string text)
         {
-            var splitParameters = new char[] { ' ', '\n', '\r' };
+            var delimeters = new char[] { ' ', '\n', '\r' };
 
-            var splittedContent = text.Split(splitParameters, StringSplitOptions.RemoveEmptyEntries);
+            var words = text.Split(delimeters, StringSplitOptions.RemoveEmptyEntries);
 
-            return splittedContent;
+            return words;
         }
     }
 }

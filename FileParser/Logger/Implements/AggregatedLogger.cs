@@ -1,7 +1,5 @@
 ﻿using FileParser.Logger.Interfaces;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FileParser.Logger.Implements
 {
@@ -11,7 +9,7 @@ namespace FileParser.Logger.Implements
 
         public AggregatedLogger(params ILogger[] loggers)
         {
-            _loggers = new List<ILogger>(loggers); 
+            _loggers = new List<ILogger>(loggers);
         }
 
         public void LogInformation(string message)

@@ -2,7 +2,7 @@
 {
     public interface IOperationHandler
     {
-        bool CanProcess(InputData inputData);
+        bool CanProcess(Operation currentOperation);
         void Process(InputData inputData);
     }
 }

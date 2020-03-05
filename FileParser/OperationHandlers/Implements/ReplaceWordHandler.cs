@@ -5,16 +5,21 @@ namespace FileParser.OperationHandlers
 {
     public class ReplaceWordHandler : IOperationHandler
     {
+        #region Private Members
+
         private readonly IFileManager _fileManager;
+
+        #endregion
 
         public ReplaceWordHandler(IFileManager fileManager)
         {
-            _fileManager = fileManager ?? throw new ArgumentNullException(nameof(fileManager));
+            _fileManager = fileManager ??
+                throw new ArgumentNullException(nameof(fileManager));
         }
 
-        public bool CanProcess(InputData inputData)
+        public bool CanProcess(Operation currentOperation)
         {
-            return inputData.Operation == Operation.Replace;
+            return currentOperation == Operation.Replace;
         }
 
         public void Process(InputData inputData)

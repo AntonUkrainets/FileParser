@@ -2,6 +2,7 @@
 using FileParser.Files;
 using FileParser.OperationHandlers;
 using Moq;
+using System;
 using Xunit;
 
 namespace FileParserTests
@@ -12,7 +13,6 @@ namespace FileParserTests
         public void CanProcess_Positive()
         {
             // Arrange
-            var expectedValue = true;
             var inputData = new InputData
             {
                 Operation = Operation.Replace
@@ -23,17 +23,16 @@ namespace FileParserTests
             var handler = new ReplaceWordHandler(fileManagerMock.Object);
 
             // Act
-            var actualValue = handler.CanProcess(inputData);
+            var actualValue = handler.CanProcess(inputData.Operation);
 
             // Assert
-            Assert.Equal(expectedValue, actualValue);
+            Assert.True(actualValue);
         }
 
         [Fact]
         public void CanProcess_Negative()
         {
             // Arrange
-            var expectedValue = false;
             var inputData = new InputData
             {
                 Operation = Operation.Count
@@ -44,10 +43,50 @@ namespace FileParserTests
             var handler = new ReplaceWordHandler(fileManagerMock.Object);
 
             // Act
-            var actualValue = handler.CanProcess(inputData);
+            var actualValue = handler.CanProcess(inputData.Operation);
 
             // Assert
-            Assert.Equal(expectedValue, actualValue);
+            Assert.False(actualValue);
+        }
+
+        [Fact]
+        public void CantProcess_Positive()
+        {
+            // Arrange
+            var inputData = new InputData
+            {
+                Operation = Operation.Count
+            };
+
+            // Assert
+            var actualValue = Assert.Throws<ArgumentNullException>(
+                () =>
+                    {
+                        var handler = new ReplaceWordHandler(null);
+                    }
+            );
+
+            Assert.IsType<ArgumentNullException>(actualValue);
+        }
+
+        [Fact]
+        public void CantProcess_Negative()
+        {
+            // Arrange
+            var inputData = new InputData
+            {
+                Operation = Operation.Replace
+            };
+
+            // Assert
+            var actualValue = Assert.Throws<ArgumentNullException>(
+                () =>
+                    {
+                        var handler = new ReplaceWordHandler(null);
+                    }
+            );
+
+            Assert.IsType<ArgumentNullException>(actualValue);
         }
     }
 }
