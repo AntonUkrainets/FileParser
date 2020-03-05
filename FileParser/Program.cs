@@ -76,8 +76,8 @@ namespace FileParser
         private static void ShowError()
         {
             _logger.LogInformation(
-                $"Input must be like <FilePath> <SearchingString>;{Environment.NewLine}" +
-                $"<FilePath> <SearchingString> <ReplaceableString");
+                $"Input must be like <FilePath> <SearchString>;{Environment.NewLine}" +
+                $"<FilePath> <SearchString> <ReplaceableString");
         }
     }
 }

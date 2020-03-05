@@ -69,7 +69,7 @@ namespace FileParserTests
                 Operation = Operation.Count
             };
 
-            // Assert
+            // Act
             var actualValue = Assert.Throws<ArgumentNullException>(
                 () =>
                     {
@@ -77,6 +77,7 @@ namespace FileParserTests
                     }
             );
 
+            // Assert
             Assert.IsType<ArgumentNullException>(actualValue);
         }
 
@@ -89,7 +90,7 @@ namespace FileParserTests
                 Operation = Operation.Replace
             };
 
-            // Assert
+            // Act
             var actualValue = Assert.Throws<ArgumentNullException>(
                 () =>
                     {
@@ -97,6 +98,7 @@ namespace FileParserTests
                     }
             );
 
+            // Assert
             Assert.IsType<ArgumentNullException>(actualValue);
         }
 
