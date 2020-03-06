@@ -1,14 +1,14 @@
 using FileParser;
+using FileParser.Business;
 using FileParser.Files;
 using FileParser.Logger.Interfaces;
-using FileParser.OperationHandlers;
-using Moq;
 using System;
 using Xunit;
+using Moq;
 
 namespace FileParserTests
 {
-    public class CountWordHandlerTests
+    public class CountWordOperationTests
     {
         [Fact]
         public void CanProcess_Positive()
@@ -23,7 +23,7 @@ namespace FileParserTests
             var fileManagerMock = new Mock<IFileManager>();
             var loggerMock = new Mock<ILogger>();
 
-            var handler = new CountWordHandler(
+            var handler = new CountWordOperation(
                 fileManagerMock.Object,
                 loggerMock.Object
             );
@@ -48,7 +48,7 @@ namespace FileParserTests
             var fileManagerMock = new Mock<IFileManager>();
             var loggerMock = new Mock<ILogger>();
 
-            var handler = new CountWordHandler(
+            var handler = new CountWordOperation(
                 fileManagerMock.Object,
                 loggerMock.Object
             );
@@ -73,7 +73,7 @@ namespace FileParserTests
             var actualValue = Assert.Throws<ArgumentNullException>(
                 () =>
                     {
-                        var handler = new CountWordHandler(null, null);
+                        var handler = new CountWordOperation(null, null);
                     }
             );
 
@@ -94,7 +94,7 @@ namespace FileParserTests
             var actualValue = Assert.Throws<ArgumentNullException>(
                 () =>
                     {
-                        var handler = new CountWordHandler(null, null);
+                        var handler = new CountWordOperation(null, null);
                     }
             );
 
@@ -119,7 +119,7 @@ namespace FileParserTests
 
             var fileManagerMock = new Mock<IFileManager>();
             fileManagerMock
-                .Setup(x => x.ReadText(It.IsAny<string>()))
+                .Setup(x => x.ReadText())
                 .Returns(text);
 
             var actualMessage = string.Empty;
@@ -129,13 +129,13 @@ namespace FileParserTests
                 .Setup(x => x.LogInformation(It.IsAny<string>()))
                 .Callback<string>(message => actualMessage = message);
 
-            var handler = new CountWordHandler(
+            var operation = new CountWordOperation(
                 fileManagerMock.Object,
                 loggerMock.Object
             );
 
             // Act
-            handler.Process(inputData);
+            operation.Process(inputData);
 
             // Assert
             Assert.Equal(expectedMessage, actualMessage);

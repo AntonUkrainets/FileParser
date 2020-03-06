@@ -1,13 +1,13 @@
 ﻿using FileParser;
+using FileParser.Business;
 using FileParser.Files;
-using FileParser.OperationHandlers;
-using Moq;
 using System;
 using Xunit;
+using Moq;
 
 namespace FileParserTests
 {
-    public class ReplaceWordHandlerTests
+    public class ReplaceWordOperationTests
     {
         [Fact]
         public void CanProcess_Positive()
@@ -20,7 +20,7 @@ namespace FileParserTests
 
             var fileManagerMock = new Mock<IFileManager>();
 
-            var handler = new ReplaceWordHandler(fileManagerMock.Object);
+            var handler = new ReplaceWordOperation(fileManagerMock.Object);
 
             // Act
             var actualValue = handler.CanProcess(inputData.Operation);
@@ -40,7 +40,7 @@ namespace FileParserTests
 
             var fileManagerMock = new Mock<IFileManager>();
 
-            var handler = new ReplaceWordHandler(fileManagerMock.Object);
+            var handler = new ReplaceWordOperation(fileManagerMock.Object);
 
             // Act
             var actualValue = handler.CanProcess(inputData.Operation);
@@ -62,7 +62,7 @@ namespace FileParserTests
             var actualValue = Assert.Throws<ArgumentNullException>(
                 () =>
                     {
-                        var handler = new ReplaceWordHandler(null);
+                        var handler = new ReplaceWordOperation(null);
                     }
             );
 
@@ -83,7 +83,7 @@ namespace FileParserTests
             var actualValue = Assert.Throws<ArgumentNullException>(
                 () =>
                     {
-                        var handler = new ReplaceWordHandler(null);
+                        var operation = new ReplaceWordOperation(null);
                     }
             );
 

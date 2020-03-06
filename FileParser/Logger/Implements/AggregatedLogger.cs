@@ -1,20 +1,20 @@
-﻿using FileParser.Logger.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using FileParser.Logger.Interfaces;
 
 namespace FileParser.Logger.Implements
 {
     public class AggregatedLogger : ILogger
     {
-        private IEnumerable<ILogger> _loggers;
+        private IEnumerable<ILogger> loggers;
 
         public AggregatedLogger(params ILogger[] loggers)
         {
-            _loggers = new List<ILogger>(loggers);
+            this.loggers = loggers;
         }
 
         public void LogInformation(string message)
         {
-            foreach (var logger in _loggers)
+            foreach (var logger in loggers)
             {
                 logger.LogInformation(message);
             }

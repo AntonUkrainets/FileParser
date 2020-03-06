@@ -1,13 +1,10 @@
-﻿namespace FileParser
-{
-    public class InputDataParser
-    {
-        public bool IsValid(string[] args)
-        {
-            return (args.Length == 2) || (args.Length == 3);
-        }
+﻿using FileParser.Model;
 
-        public InputData Parse(string[] args)
+namespace FileParser.Parser
+{
+    public static class InputDataParser
+    {
+        public static InputData Parse(string[] args)
         {
             var inputData = new InputData
             {

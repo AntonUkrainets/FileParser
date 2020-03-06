@@ -1,5 +1,5 @@
-﻿using FileParser.Logger.Interfaces;
-using System;
+﻿using System;
+using FileParser.Logger.Interfaces;
 
 namespace FileParser.Logger.Implements
 {
@@ -7,7 +7,7 @@ namespace FileParser.Logger.Implements
     {
         public void LogInformation(string message)
         {
-            Console.WriteLine($"{DateTime.UtcNow.ToString("yyyyMMdd HH:mm:ss")} {message}");
+            Console.WriteLine($"{DateTime.UtcNow.ToString("yyyy.MMd.d HH:mm:ss")} {message}");
         }
     }
 }

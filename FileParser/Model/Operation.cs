@@ -1,4 +1,4 @@
-﻿namespace FileParser
+﻿namespace FileParser.Model
 {
     public enum Operation
     {
