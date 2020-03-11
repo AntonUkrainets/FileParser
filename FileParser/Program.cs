@@ -5,12 +5,12 @@ using System.Linq;
 using FileParser.Business;
 using FileParser.Business.Implements;
 using FileParser.Business.Interfaces;
-using FileParser.FilesManagers.Implements;
-using FileParser.FilesManagers.Interfaces;
 using FileParser.Parser;
-using FileParser.Logger.Implements;
-using FileParser.Logger.Interfaces;
 using FileParser.Validation.Implements;
+using Liba.FilesManagers.Implements;
+using Liba.FilesManagers.Interfaces;
+using Liba.Logger.Implements;
+using Liba.Logger.Interfaces;
 
 namespace FileParser
 {

@@ -1,9 +1,9 @@
-﻿using FileParser;
+﻿using System;
 using FileParser.Business;
-using FileParser.Files;
-using System;
-using Xunit;
+using FileParser.Model;
+using Liba.FilesManagers.Interfaces;
 using Moq;
+using Xunit;
 
 namespace FileParserTests
 {

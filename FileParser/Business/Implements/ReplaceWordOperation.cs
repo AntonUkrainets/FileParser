@@ -1,7 +1,7 @@
 ﻿using System;
 using FileParser.Business.Interfaces;
-using FileParser.FilesManagers.Interfaces;
 using FileParser.Model;
+using Liba.FilesManagers.Interfaces;
 
 namespace FileParser.Business
 {

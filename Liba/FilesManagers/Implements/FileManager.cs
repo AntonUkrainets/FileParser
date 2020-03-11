@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using FileParser.FilesManagers.Interfaces;
+using Liba.FilesManagers.Interfaces;
 
-namespace FileParser.FilesManagers.Implements
+namespace Liba.FilesManagers.Implements
 {
     public class FileManager : IFileManager
     {
-        private string filePath;
+        private readonly string filePath;
 
         public FileManager(string filePath)
         {
@@ -62,7 +62,7 @@ namespace FileParser.FilesManagers.Implements
             var bufferSize = 4 * 1024;
             var blocks = Math.Ceiling((decimal)text.Length / bufferSize);
 
-            using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Write))
+            using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 using (var bufferedStream = new BufferedStream(fileStream))
                 {

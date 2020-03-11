@@ -1,4 +1,4 @@
-﻿namespace FileParser.FilesManagers.Interfaces
+﻿namespace Liba.FilesManagers.Interfaces
 {
     public interface IFileManager
     {

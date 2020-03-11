@@ -1,10 +1,10 @@
-using FileParser;
-using FileParser.Business;
-using FileParser.Files;
-using FileParser.Logger.Interfaces;
 using System;
-using Xunit;
+using FileParser.Business.Implements;
+using FileParser.Model;
+using Liba.FilesManagers.Interfaces;
+using Liba.Logger.Interfaces;
 using Moq;
+using Xunit;
 
 namespace FileParserTests
 {

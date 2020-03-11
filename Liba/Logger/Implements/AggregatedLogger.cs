@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using FileParser.Logger.Interfaces;
+using Liba.Logger.Interfaces;
 
-namespace FileParser.Logger.Implements
+namespace Liba.Logger.Implements
 {
     public class AggregatedLogger : ILogger
     {
-        private IEnumerable<ILogger> loggers;
+        private readonly IEnumerable<ILogger> loggers;
 
         public AggregatedLogger(params ILogger[] loggers)
         {

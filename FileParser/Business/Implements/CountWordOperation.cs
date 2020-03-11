@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using FileParser.Business.Interfaces;
-using FileParser.FilesManagers.Interfaces;
 using FileParser.Model;
-using FileParser.Logger.Interfaces;
+using Liba.FilesManagers.Interfaces;
+using Liba.Logger.Interfaces;
 
 namespace FileParser.Business.Implements
 {

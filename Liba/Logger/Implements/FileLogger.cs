@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using FileParser.Logger.Interfaces;
+using Liba.Logger.Interfaces;
 
-namespace FileParser.Logger.Implements
+namespace Liba.Logger.Implements
 {
     public class FileLogger : ILogger
     {
-        private string filePath;
+        private readonly string filePath;
 
         public FileLogger(string filePath)
         {
