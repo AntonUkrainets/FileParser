@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FileParser.Business;
 using FileParser.Business.Implements;
 using FileParser.Business.Interfaces;
 using FileParser.Parser;
@@ -29,9 +28,7 @@ namespace FileParser
 
             try
             {
-                var validator = new Validator();
-
-                if (!validator.IsArgumentsValid(args))
+                if (!Validator.IsArgumentsValid(args))
                 {
                     logger.LogInformation(
                         $"Input must be like <FilePath> <SearchString>;{Environment.NewLine}" +
@@ -52,7 +49,7 @@ namespace FileParser
 
                 var inputData = parser.Parse(args);
 
-                if (!validator.IsFileValid(inputData.FilePath))
+                if (!Validator.IsFileValid(inputData.FilePath))
                     throw new FileNotFoundException($"File '{inputData.FilePath}' not found");
 
                 IFileManager fileManager = new FileManager(inputData.FilePath);

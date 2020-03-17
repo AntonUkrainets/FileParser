@@ -3,7 +3,7 @@ using FileParser.Business.Interfaces;
 using FileParser.Model;
 using Liba.FilesManagers.Interfaces;
 
-namespace FileParser.Business
+namespace FileParser.Business.Implements
 {
     public class ReplaceWordOperation : IOperation
     {
