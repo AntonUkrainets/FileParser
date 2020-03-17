@@ -6,6 +6,7 @@ using FileParser.Business;
 using FileParser.Business.Implements;
 using FileParser.Business.Interfaces;
 using FileParser.Parser;
+using FileParser.Parser.Interfaces;
 using FileParser.Validation.Implements;
 using Liba.FilesManagers.Implements;
 using Liba.FilesManagers.Interfaces;
@@ -39,7 +40,17 @@ namespace FileParser
                     return;
                 }
 
-                var inputData = InputDataParser.Parse(args);
+                var inputDataParsers = new List<IParser>
+                {
+                    new CountWordsParser(),
+                    new ReplaceWordParser()
+                };
+
+                var parser = inputDataParsers
+                        .Where(p => p.CanParse(args.Length))
+                        .FirstOrDefault();
+
+                var inputData = parser.Parse(args);
 
                 if (!validator.IsFileValid(inputData.FilePath))
                     throw new FileNotFoundException($"File '{inputData.FilePath}' not found");
