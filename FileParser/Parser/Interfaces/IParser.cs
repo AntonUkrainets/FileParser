@@ -4,7 +4,7 @@ namespace FileParser.Parser.Interfaces
 {
     public interface IParser
     {
-        bool CanParse(int countArgs);
-        InputData Parse(string[] args);
+        bool CanParse(string[] args);
+        IOperationData Parse(string[] args);
     }
 }

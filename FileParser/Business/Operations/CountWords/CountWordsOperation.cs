@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
 using FileParser.Business.Interfaces;
+using FileParser.FilesManagers.Interfaces;
 using FileParser.Model;
-using Liba.FilesManagers.Interfaces;
 using Liba.Logger.Interfaces;
 
-namespace FileParser.Business.Implements
+namespace FileParser.Business.Operations.CountWords
 {
-    public class CountWordOperation : IOperation
+    public class CountWordsOperation : IOperation
     {
         #region Private Members
 
@@ -16,7 +16,7 @@ namespace FileParser.Business.Implements
 
         #endregion
 
-        public CountWordOperation(
+        public CountWordsOperation(
             IFileManager fileManager,
             ILogger logger
         )
@@ -28,17 +28,22 @@ namespace FileParser.Business.Implements
                 throw new ArgumentNullException(nameof(logger));
         }
 
-        public bool CanProcess(Operation operation)
+        public bool CanProcess(IOperationData operationData)
         {
-            return operation == Operation.Count;
+            return operationData is CountWordsData;
         }
 
-        public void Process(InputData inputData)
+        public void Process(IOperationData operationData)
         {
-            var text = fileManager.ReadText();
+            CountWords((CountWordsData)operationData);
+        }
+
+        private void CountWords(CountWordsData operationData)
+        {
+            var text = fileManager.ReadText(operationData.FilePath);
             var words = GetWords(text);
 
-            var count = words.Count(word => word == inputData.SearchWord);
+            var count = words.Count(word => word == operationData.SearchWord);
             logger.LogInformation($"Count founded words: {count}");
         }
 

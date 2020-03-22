@@ -4,7 +4,7 @@ namespace FileParser.Business.Interfaces
 {
     public interface IOperation
     {
-        bool CanProcess(Operation operation);
-        void Process(InputData inputData);
+        bool CanProcess(IOperationData operationData);
+        void Process(IOperationData operationData);
     }
 }

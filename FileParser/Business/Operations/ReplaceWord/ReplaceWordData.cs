@@ -1,8 +1,9 @@
-﻿namespace FileParser.Model
+﻿using FileParser.Model;
+
+namespace FileParser.Business.Operations.ReplaceWord
 {
-    public class InputData
+    public class ReplaceWordData : IOperationData
     {
-        public Operation Operation { get; set; }
         public string FilePath { get; set; }
         public string SearchWord { get; set; }
         public string ReplaceableWord { get; set; }

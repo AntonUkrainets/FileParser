@@ -1,21 +1,17 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using Liba.FilesManagers.Interfaces;
+using FileParser.FilesManagers.Interfaces;
 
-namespace Liba.FilesManagers.Implements
+namespace FileParser.FilesManagers
 {
     public class FileManager : IFileManager
     {
-        private readonly string filePath;
-
-        public FileManager(string filePath)
+        public string ReadText(string filePath)
         {
-            this.filePath = filePath;
-        }
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException($"File '{filePath}' not found");
 
-        public string ReadText()
-        {
             using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
                 var fileSize = (int)fileStream.Length;
@@ -57,7 +53,7 @@ namespace Liba.FilesManagers.Implements
             }
         }
 
-        public void WriteText(string text)
+        public void WriteText(string filePath, string text)
         {
             var bufferSize = 4 * 1024;
             var blocks = Math.Ceiling((decimal)text.Length / bufferSize);

@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using FileParser.Business.Implements;
-using FileParser.Business.Interfaces;
-using FileParser.Parser;
-using FileParser.Parser.Interfaces;
-using FileParser.Validation.Implements;
-using Liba.FilesManagers.Implements;
-using Liba.FilesManagers.Interfaces;
-using Liba.Logger.Implements;
+using FileParser.Core;
+using FileParser.Validation;
+using Liba.Logger;
 using Liba.Logger.Interfaces;
 
 namespace FileParser
@@ -26,6 +18,8 @@ namespace FileParser
                     new ConsoleLogger()
                 );
 
+            var environment = new AppEnvironment(logger);
+
             try
             {
                 if (!Validator.IsArgumentsValid(args))
@@ -37,35 +31,9 @@ namespace FileParser
                     return;
                 }
 
-                var inputDataParsers = new List<IParser>
-                {
-                    new CountWordsParser(),
-                    new ReplaceWordParser()
-                };
+                var inputData = environment.Parse(args);
 
-                var parser = inputDataParsers
-                        .Where(p => p.CanParse(args.Length))
-                        .FirstOrDefault();
-
-                var inputData = parser.Parse(args);
-
-                if (!Validator.IsFileValid(inputData.FilePath))
-                    throw new FileNotFoundException($"File '{inputData.FilePath}' not found");
-
-                IFileManager fileManager = new FileManager(inputData.FilePath);
-
-                var operations = new List<IOperation>
-                {
-                    new CountWordOperation(fileManager, logger),
-                    new ReplaceWordOperation(fileManager)
-                };
-
-                var operation = operations.FirstOrDefault(o => o.CanProcess(inputData.Operation));
-
-                if (operation == null)
-                    throw new NotSupportedException($"Operation '{inputData.Operation}' is not supported.");
-
-                operation.Process(inputData);
+                environment.Run(inputData);
             }
             catch (Exception ex)
             {
