@@ -1,4 +1,4 @@
-﻿using FileParser.Model;
+﻿using FileParser.Business;
 
 namespace FileParser.Parser.Interfaces
 {

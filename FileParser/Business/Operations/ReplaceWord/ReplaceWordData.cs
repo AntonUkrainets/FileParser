@@ -1,6 +1,4 @@
-﻿using FileParser.Model;
-
-namespace FileParser.Business.Operations.ReplaceWord
+﻿namespace FileParser.Business.Operations.ReplaceWord
 {
     public class ReplaceWordData : IOperationData
     {

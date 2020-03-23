@@ -58,7 +58,9 @@ namespace FileParser.FilesManagers
             var bufferSize = 4 * 1024;
             var blocks = Math.Ceiling((decimal)text.Length / bufferSize);
 
-            using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
+            using (var fileStream = new FileStream(filePath, 
+                                                   FileMode.OpenOrCreate, 
+                                                   FileAccess.Write))
             {
                 using (var bufferedStream = new BufferedStream(fileStream))
                 {

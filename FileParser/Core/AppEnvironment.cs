@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
+using FileParser.Business;
 using FileParser.Business.Interfaces;
 using FileParser.Business.Operations.CountWords;
 using FileParser.Business.Operations.ReplaceWord;
 using FileParser.FilesManagers;
 using FileParser.FilesManagers.Interfaces;
-using FileParser.Model;
 using FileParser.Parser;
 using FileParser.Parser.Interfaces;
 using Liba.Logger.Interfaces;

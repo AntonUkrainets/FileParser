@@ -1,4 +1,4 @@
-﻿namespace FileParser.Model
+﻿namespace FileParser.Business
 {
     public interface IOperationData
     {

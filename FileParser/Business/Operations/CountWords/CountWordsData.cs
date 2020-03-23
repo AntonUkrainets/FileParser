@@ -1,6 +1,4 @@
-﻿using FileParser.Model;
-
-namespace FileParser.Business.Operations.CountWords
+﻿namespace FileParser.Business.Operations.CountWords
 {
     public class CountWordsData : IOperationData
     {

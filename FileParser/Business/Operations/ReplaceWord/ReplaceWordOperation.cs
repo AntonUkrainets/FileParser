@@ -1,7 +1,6 @@
 ﻿using System;
 using FileParser.Business.Interfaces;
 using FileParser.FilesManagers.Interfaces;
-using FileParser.Model;
 using Liba.Logger.Interfaces;
 
 namespace FileParser.Business.Operations.ReplaceWord
@@ -43,7 +42,9 @@ namespace FileParser.Business.Operations.ReplaceWord
             text = text.Replace(operationData.SearchWord, operationData.ReplaceableWord);
 
             fileManager.WriteText(operationData.FilePath, text);
-            logger.LogInformation($"The word {operationData.SearchWord} was changed on {operationData.ReplaceableWord}");
+
+            logger.LogInformation($"The word {operationData.SearchWord} was " +
+                                  $"changed on {operationData.ReplaceableWord}");
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using FileParser.Business.Operations.ReplaceWord;
-using FileParser.Model;
+﻿using FileParser.Business;
+using FileParser.Business.Operations.ReplaceWord;
 using FileParser.Parser.Interfaces;
 
 namespace FileParser.Parser

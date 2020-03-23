@@ -1,6 +1,4 @@
-﻿using FileParser.Model;
-
-namespace FileParser.Business.Interfaces
+﻿namespace FileParser.Business.Interfaces
 {
     public interface IOperation
     {

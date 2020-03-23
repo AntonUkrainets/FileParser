@@ -2,7 +2,6 @@
 using System.Linq;
 using FileParser.Business.Interfaces;
 using FileParser.FilesManagers.Interfaces;
-using FileParser.Model;
 using Liba.Logger.Interfaces;
 
 namespace FileParser.Business.Operations.CountWords
@@ -44,6 +43,7 @@ namespace FileParser.Business.Operations.CountWords
             var words = GetWords(text);
 
             var count = words.Count(word => word == operationData.SearchWord);
+
             logger.LogInformation($"Count founded words: {count}");
         }
 

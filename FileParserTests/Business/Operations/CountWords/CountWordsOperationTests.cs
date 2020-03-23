@@ -28,10 +28,10 @@ namespace FileParserTests.Business.Operations.CountWords
         }
 
         [Fact]
-        public void Ctor()
+        public void Ctor_Positive()
         {
             // Assert
-            Assert.IsNotType<ArgumentNullException>(countWordsOperation);
+            Assert.Throws<ArgumentNullException>(() => new CountWordsOperation(null, null));
         }
 
         [Fact]
